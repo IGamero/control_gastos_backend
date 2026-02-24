@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:11        # última versión estable
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword   # cambia esto por tu contraseña segura
+      MYSQL_DATABASE: db_gastos           # la base de datos que quieres
+      MYSQL_USER: admin                   # usuario
+      MYSQL_PASSWORD: adminpassword       # contraseña del usuario
+    ports:
+      - "3306:3306"                       # puerto local
+    volumes:
+      - mariadb_data:/var/lib/mysql       # persistencia de datos
+
+volumes:
+  mariadb_data:
